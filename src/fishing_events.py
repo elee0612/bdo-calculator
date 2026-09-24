@@ -3,9 +3,9 @@ def clams(precious_clam, mystical_clam, bountiful_clam):
     """Print silver profit from a clam fishing event.
 
     Args:
-        precious_clam (int): number of Precious clams caught.
-        mystical_clam (int): number of Mystical clams caught.
         bountiful_clam (int): number of Bountiful clams caught.
+        mystical_clam (int): number of Mystical clams caught.
+        precious_clam (int): number of Precious clams caught.
     """
     
     # Calculate Clam Profits(_p)
