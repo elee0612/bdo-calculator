@@ -1,5 +1,5 @@
 # Clam Fishing Event
-def clams(precious_clam, mystical_clam, bountiful_clam):
+def clams(bountiful_clam, mystical_clam, precious_clam):
     """Print silver profit from a clam fishing event.
 
     Args:
