@@ -1,25 +1,26 @@
 # Clam Fishing Event
-def clams(bountiful_clam, mystical_clam, precious_clam):
-    """Print silver profit from a clam fishing event.
+def clams(bountiful, mystical, precious):
+    """
+    Print silver profit from a clam fishing event.
 
     Args:
-        bountiful_clam (int): number of Bountiful clams caught.
-        mystical_clam (int): number of Mystical clams caught.
-        precious_clam (int): number of Precious clams caught.
+        bountiful (int): number of Bountiful clams.
+        mystical (int): number of Mystical clams.
+        precious (int): number of Precious clamsc.
     """
     
     # Calculate Clam Profits(_p)
-    bountiful_clam_p = bountiful_clam * 1000000 # Bountiful (1,000,000 silver)
-    mystical_clam_p = mystical_clam * 10000000 # Mystical (10,000,000 silver)
-    precious_clam_p = precious_clam * 30000000 # Precious (30,000,000 silver)
+    bountiful_p = bountiful * 1000000 # Bountiful (1,000,000 silver)
+    mystical_p = mystical * 10000000 # Mystical (10,000,000 silver)
+    precious_p = precious * 30000000 # Precious (30,000,000 silver)
     
-    total_p = bountiful_clam_p+ mystical_clam_p + precious_clam_p 
+    total_p = bountiful_p + mystical_p + precious_p
     
     # Dictionary to store profits
     clam_p = {
-        "Bountiful": bountiful_clam_p,
-        "Mystical": mystical_clam_p,
-        "Precious": precious_clam_p,
+        "Bountiful": bountiful_p,
+        "Mystical": mystical_p,
+        "Precious": precious_p,
     }
     
     # Print All Clam & Total Profits

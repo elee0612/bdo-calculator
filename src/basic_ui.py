@@ -9,14 +9,12 @@ def get_int(prompt):
         user_choice = input(prompt)
         if user_choice.isdigit():
             return int(user_choice)
-        print()
-        print("Invalid input. Please enter a valid number.")
-        print()
+        print("\nInvalid input. Please enter a valid number.\n")
 
 # Exits the program
 def exit_program():
     print("Exiting the program. Goodbye!")
-    time.sleep(3)
+    time.sleep(1)
     sys.exit()
 
 # Returns to the main menu
