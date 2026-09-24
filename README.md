@@ -14,13 +14,12 @@ A command-line tool for calculating silver profit from **Black Desert Online** i
 - No external dependencies
 
 ## Usage
+### Running the exe
+1. Go to Releases on Github page.
+2. Download bdo-calculator.exe under Assets.
+3. Open the zip and run the exe.
 
 ### Running from source
-
-```
-bdo-calculator.exe
-```
-or
 ```
 python main.py
 ```
