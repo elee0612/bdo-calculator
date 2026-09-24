@@ -32,9 +32,9 @@ def menu():
         match user_choice:
             case "1":
                 print("Fishing Events selected.")
-                precious = int(input("Enter the number of Precious Clams: "))
-                mystical = int(input("Enter the number of Mystical Clams: "))
                 bountiful = int(input("Enter the number of Bountiful Clams: "))
+                mystical = int(input("Enter the number of Mystical Clams: "))
+                precious = int(input("Enter the number of Precious Clams: "))
                 print()
                 
                 fishing_events.clams(precious, mystical, bountiful)
