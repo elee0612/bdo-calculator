@@ -18,6 +18,10 @@ A command-line tool for calculating silver profit from **Black Desert Online** i
 ### Running from source
 
 ```
+bdo-calculator.exe
+```
+or
+```
 python main.py
 ```
 
