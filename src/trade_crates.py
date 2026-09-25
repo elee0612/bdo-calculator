@@ -27,7 +27,7 @@ def valencia_to_nampo(steel, bronze, snowfield, calpheon, serendia, thorn, palm,
     """
     
     # Calculate Crate Profits
-    travel_distance_bonus = 2.5 # Travel distance bonus multiplier (capped at 2.5)
+    travel_distance_bonus = 1.0 + 1.5 # Travel distance bonus multiplier (1.0 + bonus, capped at 2.5)
     bargain_bonus = 1.05 + trade_lvl * 0.005 # Bargain bonus multiplier (1.05 + 0.005 per trade level)
     total_bonus = travel_distance_bonus * bargain_bonus # Total bonus multiplier (travel distance bonus * bargain bonus)
 

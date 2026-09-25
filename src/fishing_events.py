@@ -34,5 +34,5 @@ def clams(bountiful, mystical, precious):
             print(f"{clam:<9}: {profit:>14,} silver")
             
     print("-" * 32)
-    print(f"{'Total':<9}: {total_profit:>14,} silver")
+    print(f"{'Total profit':<9}: {total_profit:>14,} silver")
     print("")
