@@ -1,16 +1,16 @@
-# Crate Base Prices(_bp)
-# Mineral Crates
-steel_bp = 67296 # Steel Ingot Crates (67,296 silver)
-bronze_bp = 113724 # Bronze Ingot Crates (113,724 silver)
-snowfield_bp = 200000 # Snowfield Jade Box (200,000 silver)
+# Crate Base Prices(_bp)# Mineral Crates
+steel_base_price = 67296 # Steel Ingot Crates (67,296 silver)
+bronze_base_price = 113724 # Bronze Ingot Crates (113,724 silver)
+snowfield_base_price = 200000 # Snowfield Jade Box (200,000 silver)
 
 # Timber Crates
-calpheon_bp = 197280 # Calpheon Timber Crate (197,280 silver)
-serendia_bp = 125460 # Serendia Timber Crate (125,460 silver)
-thorn_bp = 201150 # Thorn Timber Crate (201,150 silver)
-palm_bp = 5490 # Palm Timber Crate (5,490 silver)
+calpheon_base_price = 197280 # Calpheon Timber Crate (197,280 silver)
+serendia_base_price = 125460 # Serendia Timber Crate (125,460 silver)
+thorn_base_price = 201150 # Thorn Timber Crate (201,150 silver)
+palm_base_price = 5490 # Palm Timber Crate (5,490 silver)
 
-def valencia_to_nampo(steel, bronze, snowfield, calpheon, serendia, thorn, palm):
+# Trade route from Valencia to Nampo
+def valencia_to_nampo(steel, bronze, snowfield, calpheon, serendia, thorn, palm, trade_lvl):
     """Prints silver profits from my trade crates using the route from Valencia to Nampo.
 
     Args:
@@ -21,47 +21,53 @@ def valencia_to_nampo(steel, bronze, snowfield, calpheon, serendia, thorn, palm)
         serendia (int): number of Serendia Timber Crates
         thorn (int): number of Thorn Timber Crates
         palm (int): number of Palm Timber Crates
+        trade_lvl (int): the user's trade level
 
     Takes into account the travel distance bonus(td) and bargain bonus(b) multipliers for the route from Valencia to Nampo.
     """
     
-    # Calculate Crate Profits(_p)
-    td = 1.5 # Travel distance bonus multiplier
-    b = 1 # Bargain bonus multiplier
-    
-    steel_p = steel * steel_bp # Number of Crates(_c*) * Base Price(_bp)
-    bronze_p = bronze * bronze_bp
-    snowfield_p = snowfield * snowfield_bp
-    calpheon_p = calpheon * calpheon_bp
-    serendia_p = serendia * serendia_bp
-    thorn_p = thorn * thorn_bp
-    palm_p = palm * palm_bp
+    # Calculate Crate Profits
+    travel_distance_bonus = 2.5 # Travel distance bonus multiplier (capped at 2.5)
+    bargain_bonus = 1.05 + trade_lvl * 0.005 # Bargain bonus multiplier (1.05 + 0.005 per trade level)
+    total_bonus = travel_distance_bonus * bargain_bonus # Total bonus multiplier (travel distance bonus * bargain bonus)
 
-    total_p = steel_p + bronze_p + snowfield_p + calpheon_p + serendia_p + thorn_p + palm_p
-    bonus_total_p = round(total_p * td * b)
+    # Number of Crates * (Base Price * Total Bonus) rounded to nearest integer
+    steel_profit = steel * round(steel_base_price * total_bonus)
+    bronze_profit = bronze * round(bronze_base_price * total_bonus)
+    snowfield_profit = snowfield * round(snowfield_base_price * total_bonus)
+    calpheon_profit = calpheon * round(calpheon_base_price * total_bonus)
+    serendia_profit = serendia * round(serendia_base_price * total_bonus)
+    thorn_profit = thorn * round(thorn_base_price * total_bonus)
+    palm_profit = palm * round(palm_base_price * total_bonus)
+
+    total_profit = round(steel_profit + bronze_profit + snowfield_profit + calpheon_profit + serendia_profit + thorn_profit + palm_profit)
     
-    # Dictionary to store Crate Profits
-    crate_p = {
-        "Steel": steel_p,
-        "Bronze": bronze_p,
-        "Snowfield": snowfield_p,
-        "Calpheon": calpheon_p,
-        "Serendia": serendia_p,
-        "Thorn": thorn_p,
-        "Palm": palm_p,
+    # Dictionary to store crate profits
+    crate_profits = {
+        "Steel": steel_profit,
+        "Bronze": bronze_profit,
+        "Snowfield": snowfield_profit,
+        "Calpheon": calpheon_profit,
+        "Serendia": serendia_profit,
+        "Thorn": thorn_profit,
+        "Palm": palm_profit,
     }
     
     # Print All Crate & Total Profits
-    # '<11' left-aligns the crate name in a 11-character wide field
+    # '<12' left-aligns the crate name in a 12-character wide field
     # '>14,' right-aligns the profit with comma formatting in a 14-character field
-    print(f"{'Crates':<11}: {'Profit':>14}")
-    print("-" * 34)
+    print(f"{'Crates':<12}: {'Profit':>14}")
+    print("-" * 35)
     
-    for crate, profit in crate_p.items():
-        print(f"{crate:<11}: {profit:>14,} silver")
-        
-    print("-" * 34)
-    print(f"{'Total w/o b':<11}: {total_p:>14,} silver")
-    print(f"{'Total w/ b':<11}: {bonus_total_p:>14,} silver")
+    # Print each crate's profit with formatting
+    for crate, profit in crate_profits.items():
+        print(f"{crate:<12}: {profit:>14,} silver")
+    
+    print()
+    print(f"{'TD bonus':<12}: {travel_distance_bonus*100:>14.2f}%") # Total travel distance bonus multiplier
+    print(f"{'B bonus':<12}: {bargain_bonus*100:>14.2f}%") # Total bargain bonus multiplier
+    print("-" * 35)
+    print(f"{'Total profit':<12}: {total_profit:>14,} silver") # Total profit with bonuses applied
+    print(f"{'Total bonus':<12}: {total_bonus*100:>14.2f} %") # Total bonus multiplier
     print("")
     

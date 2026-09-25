@@ -3,6 +3,7 @@ import time
 import fishing_events
 import trade_crates
 
+# Ensures that the user enters a valid non-negative integer
 def get_int(prompt):
     # Repeatedly prompt until the user enters a valid non-negative integer
     while True:
@@ -66,10 +67,12 @@ def menu():
                 serendia = get_int("Enter the number of Serendia Timber Crates: ")
                 thorn = get_int("Enter the number of Thorn Timber Crates: ")
                 palm = get_int("Enter the number of Palm Timber Crates: ")
+                print("Beginner(1-10), Apprentice(11-20), Skilled(21-30), Professional(31-40), Artisan(41-50), Master(51-80), Guru(81-130+)")
+                trade_lvl = get_int("Enter your Trade Level between 1 and 130+: ")
                 print()
                 
                 # Call the valencia_to_nampo function from trade_crates.py with user input
-                trade_crates.valencia_to_nampo(steel, bronze, snowfield, calpheon, serendia, thorn, palm)
+                trade_crates.valencia_to_nampo(steel, bronze, snowfield, calpheon, serendia, thorn, palm, trade_lvl)
                 return_to_menu()
             case 3:
                 exit_program()
